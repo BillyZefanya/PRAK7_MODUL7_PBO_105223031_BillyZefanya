@@ -25,24 +25,33 @@ class AcPintar extends PerangkatPintar {
     void aktifkan() {
         System.out.println("AC menyala dan mulai mendinginkan ruangan.");
     }
+
+    //Soal 4 (method khusus)
+    void aturSuhu(int suhu) {
+        System.out.println("Suhu AC diatur ke " + suhu + " derajat.");
+    }
 }
 
 public class Main {
     public static void main(String[] args) {
 
-        // Polymorphism (Soal 3)
+        // Soal 3 (polymorphism + upcasting)
         PerangkatPintar[] devices = new PerangkatPintar[2];
-
         devices[0] = new LampuPintar();
         devices[1] = new AcPintar();
 
         for (PerangkatPintar device : devices) {
-            device.aktifkan(); // overriding jalan
+            device.aktifkan();
         }
 
-        // Overloading (Soal 2)
+        // Soal 2 (overloading)
         LampuPintar lampu = new LampuPintar();
         lampu.aturKecerahan(70);
         lampu.aturKecerahan(80, "Putih");
+
+        //Soal 4 (downcasting untuk akses method khusus)
+        if (devices[1] instanceof AcPintar) {
+            ((AcPintar) devices[1]).aturSuhu(24);
+        }
     }
 }
